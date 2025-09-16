@@ -42,7 +42,7 @@ export default function Support() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
-      className="w-full rounded-3xl px-6 sm:px-10 md:px-14 py-12 sm:py-14 md:py-16 text-center shadow-[0_30px_60px_-20px_rgba(0,0,0,0.12)]"
+      className="w-full rounded-3xl px-6 sm:px-10 md:px-14 py-12 sm:py-14 md:py-16 text-center "
       animate={{ y: [0, -2, 0] }}
       transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
     >
