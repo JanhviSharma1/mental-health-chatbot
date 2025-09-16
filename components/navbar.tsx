@@ -15,7 +15,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Glassy navbar */}
+      {/* Navbar */}
       <motion.nav
         initial={{ y: -40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -27,9 +27,8 @@ export default function Navbar() {
           shadow-lg border border-white/20
         "
       >
-        {/* Use relative + centered content; hamburger absolutely on the left */}
         <div className="relative flex items-center justify-center px-5 py-3 md:py-3.5 min-h-[56px]">
-          {/* Mobile hamburger (absolute left; roomy hit area) */}
+          {/* Mobile hamburger */}
           <button
             aria-label="Toggle menu"
             aria-expanded={open}
@@ -71,7 +70,6 @@ export default function Navbar() {
             </motion.span>
           </button>
 
-          {/* Desktop links (centered) */}
           <div className="hidden md:flex justify-center gap-10 text-sm font-semibold">
             {LINKS.map(({ href, label }) => (
               <a
@@ -85,7 +83,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile dropdown (fills width; sits flush under bar) */}
+        {/* Mobile dropdown */}
         <AnimatePresence>
           {open && (
             <motion.div
@@ -112,8 +110,6 @@ export default function Navbar() {
           )}
         </AnimatePresence>
       </motion.nav>
-
-      {/* Spacer to prevent overlap */}
       <div className="h-20 md:h-0" />
     </>
   );

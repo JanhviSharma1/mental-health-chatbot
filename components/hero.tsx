@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 const Hero = () => {
   return (
     <div className="flex flex-col md:flex-row items-center justify-between px-6 md:px-10 pt-2 md:pt-30 pb-16 md:pb-20 gap-8 md:gap-12">
-      {/* Left column - image */}
+      {/* Left column */}
       <motion.div
         className="w-full md:w-1/2 flex justify-center mb-6 md:mb-0"
         initial={{ opacity: 0, x: -50 }}
@@ -23,7 +23,7 @@ const Hero = () => {
         />
       </motion.div>
 
-      {/* Right column - heading + buttons */}
+      {/* Right column */}
       <motion.div
         className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left"
         initial={{ opacity: 0, x: 50 }}
