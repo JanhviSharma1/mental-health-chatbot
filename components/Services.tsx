@@ -108,7 +108,7 @@ const Card = ({
 
 const Service = () => {
   return (
-    <section className="max-w-[1100px] mx-auto px-4 pt-8 pb-12">
+    <section className="max-w-[1100px] mx-auto px-4 pt-20 pb-12">
       <h2 className="text-center text-4xl md:text-5xl font-extrabold text-[#4b1d1d] mb-6">
         What we offer?
       </h2>

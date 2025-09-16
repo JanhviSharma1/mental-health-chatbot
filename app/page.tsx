@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Navbar from "../components/navbar";
 import Hero from "../components/hero";
-import Support from "../components/Support";
+import Support from "@/components/Support";
 import Service from "@/components/Services";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <Hero />
       <Support />
       <Service />
+      <Footer />
     </div>
   );
 }
