@@ -9,7 +9,7 @@ const Hero = () => {
     <div className="flex flex-col md:flex-row items-center justify-between px-6 md:px-10 pt-2 md:pt-30 pb-16 md:pb-20 gap-8 md:gap-12">
       {/* Left column */}
       <motion.div
-        className="w-full md:w-1/2 flex justify-center mb-6 md:mb-0"
+        className="w-full md:w-1/2 flex justify-center mb-2 md:mb-0"
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}

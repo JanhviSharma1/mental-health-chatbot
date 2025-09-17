@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 const arrowSvg =
   "data:image/svg+xml;utf8," +
@@ -11,12 +11,14 @@ const arrowSvg =
   `);
 
 export default function CustomCursor() {
-  const isCoarse =
-    typeof window !== "undefined" &&
-    window.matchMedia("(pointer: coarse)").matches;
+  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    if (isCoarse) return;
+    // Run only on client
+    const isCoarse = window.matchMedia("(pointer: coarse)").matches;
+    if (isCoarse) return; // skip for touch devices
+
+    setEnabled(true);
 
     const move = (e: MouseEvent) => {
       document.documentElement.style.setProperty(
@@ -31,25 +33,22 @@ export default function CustomCursor() {
 
     window.addEventListener("mousemove", move);
     return () => window.removeEventListener("mousemove", move);
-  }, [isCoarse]);
+  }, []);
 
-  if (isCoarse) return null;
+  if (!enabled) return null;
 
   return (
-    <>
-      {/* Custom Cursor */}
-      <div
-        className="fixed z-[9999] pointer-events-none -translate-x-1/2 -translate-y-1/2"
-        style={{
-          left: "var(--cursor-x, -100px)",
-          top: "var(--cursor-y, -100px)",
-          width: 22,
-          height: 22,
-          backgroundImage: `url(${arrowSvg})`,
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
-        }}
-      />
-    </>
+    <div
+      className="fixed z-[9999] pointer-events-none -translate-x-1/2 -translate-y-1/2"
+      style={{
+        left: "var(--cursor-x, -100px)",
+        top: "var(--cursor-y, -100px)",
+        width: 22,
+        height: 22,
+        backgroundImage: `url(${arrowSvg})`,
+        backgroundSize: "contain",
+        backgroundRepeat: "no-repeat",
+      }}
+    />
   );
 }
