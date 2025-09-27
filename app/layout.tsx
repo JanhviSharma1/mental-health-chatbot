@@ -3,6 +3,7 @@ import { Josefin_Sans } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import CustomCursor from "@/components/CustomCursor";
+import Navbar from "@/components/navbar";
 
 const josefinSans = Josefin_Sans({
   variable: "--font-josefin-sans",
@@ -24,6 +25,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={`${josefinSans.variable} font-sans antialiased`}>
+          <Navbar />
           <CustomCursor />
           {children}
         </body>
