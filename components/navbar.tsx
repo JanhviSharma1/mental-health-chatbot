@@ -2,6 +2,13 @@
 
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 
 const LINKS = [
   { href: "#home", label: "HOME" },
@@ -27,14 +34,14 @@ export default function Navbar() {
           shadow-lg border border-white/20
         "
       >
-        <div className="relative flex items-center justify-center px-5 py-3 md:py-3.5 min-h-[56px]">
+        <div className="relative flex items-center justify-between px-5 py-3 md:py-3.5 min-h-[56px]">
           {/* Mobile hamburger */}
           <button
             aria-label="Toggle menu"
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
             className="
-              md:hidden absolute left-2 top-1/2 -translate-y-1/2
+              md:hidden
               inline-flex items-center justify-center
               w-10 h-10 rounded-xl
               bg-white/60 backdrop-blur border border-black/10
@@ -70,6 +77,7 @@ export default function Navbar() {
             </motion.span>
           </button>
 
+          {/* Center links (desktop) */}
           <div className="hidden md:flex justify-center gap-10 text-sm font-semibold">
             {LINKS.map(({ href, label }) => (
               <a
@@ -80,6 +88,26 @@ export default function Navbar() {
                 {label}
               </a>
             ))}
+          </div>
+
+          {/* Auth buttons (right side) */}
+          <div className="flex items-center gap-3">
+            <SignedOut>
+              <SignInButton mode="modal">
+                <button className="text-sm sm:text-base font-medium px-4 sm:px-5 h-9 sm:h-10 rounded-full border border-[#0E8C5E] text-[#0E8C5E] hover:bg-[#0E8C5E] hover:text-white transition">
+                  Sign In
+                </button>
+              </SignInButton>
+              <SignUpButton mode="modal">
+                <button className="bg-[#0E8C5E]/70 text-white rounded-full font-medium text-sm sm:text-base h-9 sm:h-10 px-4 sm:px-5 cursor-pointer">
+                  Sign Up
+                </button>
+              </SignUpButton>
+            </SignedOut>
+
+            <SignedIn>
+              <UserButton afterSignOutUrl="/" />
+            </SignedIn>
           </div>
         </div>
 

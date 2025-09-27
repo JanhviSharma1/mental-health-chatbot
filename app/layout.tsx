@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Josefin_Sans } from "next/font/google";
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
 import CustomCursor from "@/components/CustomCursor";
 
 const josefinSans = Josefin_Sans({
@@ -20,11 +21,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${josefinSans.variable} font-sans antialiased`}>
-        <CustomCursor />
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={`${josefinSans.variable} font-sans antialiased`}>
+          <CustomCursor />
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
