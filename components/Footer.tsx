@@ -9,10 +9,10 @@ const Footer = () => {
         <div className="grid items-center gap-2 md:grid-cols-2">
           {/* Left */}
           <div className="space-y-2">
-            <h3 className="text-left text-xl md:text-2xl font-extrabold text-[#4b1d1d]">
+            <h3 className="text-left text-base md:text-2xl sm:text-xl font-extrabold text-[#4b1d1d]">
               Remember, you don’t have to face everything alone.
             </h3>
-            <h3 className="text-left text-xl md:text-2xl font-extrabold text-[#4b1d1d]">
+            <h3 className="text-left text-base font-extrabold text-[#4b1d1d]">
               We’re here to listen, support, and guide you — anytime you need.
             </h3>
           </div>

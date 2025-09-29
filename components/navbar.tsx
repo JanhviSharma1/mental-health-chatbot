@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import {
   SignInButton,
   SignUpButton,
@@ -11,10 +12,10 @@ import {
 } from "@clerk/nextjs";
 
 const LINKS = [
-  { href: "#home", label: "HOME" },
-  { href: "#about", label: "ABOUT" },
-  { href: "#blog", label: "BLOG" },
-  { href: "#chat", label: "CHAT" },
+  { href: "/", label: "HOME" },
+  { href: "/about", label: "ABOUT" },
+  { href: "/blog", label: "BLOG" },
+  { href: "/chat", label: "CHAT" },
 ];
 
 export default function Navbar() {
@@ -62,14 +63,14 @@ export default function Navbar() {
                       key === "top"
                         ? { y: 0, rotate: 0 }
                         : key === "middle"
-                        ? { y: 6, opacity: 1 }
-                        : { y: 12, rotate: 0 },
+                          ? { y: 6, opacity: 1 }
+                          : { y: 12, rotate: 0 },
                     open:
                       key === "top"
                         ? { y: 6, rotate: 45 }
                         : key === "middle"
-                        ? { opacity: 0 }
-                        : { y: 6, rotate: -45 },
+                          ? { opacity: 0 }
+                          : { y: 6, rotate: -45 },
                   }}
                   transition={{ type: "spring", stiffness: 350, damping: 22 }}
                 />
@@ -80,13 +81,13 @@ export default function Navbar() {
           {/* Center links (desktop) */}
           <div className="hidden md:flex justify-center gap-10 text-sm font-semibold">
             {LINKS.map(({ href, label }) => (
-              <a
+              <Link
                 key={href}
                 href={href}
                 className="text-[#5D1919] hover:opacity-70 transition"
               >
                 {label}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -124,13 +125,13 @@ export default function Navbar() {
               <ul className="flex flex-col px-3 pb-4 gap-2 text-sm font-semibold">
                 {LINKS.map(({ href, label }) => (
                   <li key={href}>
-                    <a
+                    <Link
                       href={href}
                       onClick={() => setOpen(false)}
                       className="block w-full rounded-xl px-4 py-3 text-[#5D1919] hover:bg-black/5 transition"
                     >
                       {label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

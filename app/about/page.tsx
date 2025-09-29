@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Navbar from "@/components/navbar";
 
 const fadeDown = {
   hidden: { opacity: 0, y: -40 },
@@ -17,8 +18,9 @@ const leftSlide = {
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-r from-[#FFF7D9] via-[#F6F9E9] to-[#EAF8D9] px-6 py-16 flex flex-col items-center">
+      <Navbar />
       {/* Logo */}
-      <div className="mb-8 lg:mt-10">
+      <div className="mb-8 lg:mt-13 md:mt-6 ">
         <Image
           src="/mendly-logo.png"
           alt="Mendly Logo"
@@ -42,14 +44,12 @@ export default function Home() {
         transition={{ duration: 0.6 }}
       >
         <p className="text-lg text-[#5D1919] mb-4">
-          Mendly is a virtual mental health companion designed to provide
-          accessible, stigma-free, and real-time emotional support. Built using
-          advanced artificial intelligence, it helps individuals cope with
-          stress, anxiety, and depression through empathetic conversations,
-          emotion recognition, and personalized coping strategies. With a focus
-          on privacy, anonymity, and user well-being, AI Therapist bridges the
-          gap between the urgent need for mental health care and the limitations
-          of traditional therapy.
+          Mendly is a virtual mental health companion offering accessible,
+          stigma-free emotional support. Using AI, it helps manage stress,
+          anxiety, and depression through empathetic conversations and
+          personalized strategies. With privacy and anonymity at its core,
+          Mendly bridges the gap between rising mental health needs and
+          traditional therapy limitations.
         </p>
       </motion.div>
 
@@ -94,28 +94,32 @@ export default function Home() {
       </motion.div>
 
       {/* Why Mendly */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-5xl mx-auto">
         {[
           {
             title: "Always Available, Always Listening",
-            desc: "Unlike traditional therapy limited by schedules, AI Therapist is accessible 24/7. It provides immediate support during moments of stress, anxiety, or loneliness, ensuring help is always within reach.",
+            desc: "Mendly is accessible anytime, offering instant emotional support when it’s needed most. No appointments, no waiting—just real-time help during stress, anxiety, or loneliness.",
+            img: "/Listening.png",
           },
           {
             title: "Private, Anonymous, and Judgment-Free",
-            desc: "Many people avoid therapy due to social stigma or fear of judgment. With AI Therapist, users can engage confidentially and safely, knowing their conversations remain private and stigma-free.",
+            desc: "Your conversations remain confidential, ensuring complete safety and trust. Seek support without stigma, fear, or external judgment holding you back.",
+            img: "/Anonymous.png",
           },
           {
-            title: "Emotion-Aware and Personalized Support",
-            desc: "Through advanced emotion recognition and natural language processing, the AI detects your mood and tailors responses with mindfulness tips, motivational content, and coping strategies that truly match your emotional state.",
+            title: "Emotion-Aware, Personalized Support",
+            desc: "Mendly recognizes emotions and tailors responses to your unique state. From mindfulness tips to motivation, it delivers what you truly need.",
+            img: "/Emotion.png",
           },
           {
-            title: "Beyond Support: Growth and Self-Tracking",
-            desc: "AI Therapist doesn’t just respond—it helps you grow. With features like mood tracking dashboards, calmness scores, and mental readiness metrics, it encourages self-reflection, builds emotional resilience, and promotes healthier daily habits.",
+            title: "Encouraging Positivity & Wellness",
+            desc: "Beyond support, Mendly nurtures resilience and daily mental balance. Gentle reminders and affirmations help build lasting healthy habits.",
+            img: "/Wellness.png",
           },
         ].map((item, i) => (
           <motion.div
             key={i}
-            className="bg-[#FFC702]/40 p-6 rounded-2xl shadow-md text-center border border-[#5D1919]"
+            className="bg-[#FFC702]/40 p-6 rounded-2xl shadow-md border border-[#5D1919]"
             variants={leftSlide}
             initial="hidden"
             whileInView="visible"
@@ -142,10 +146,25 @@ export default function Home() {
                 }),
             }}
           >
-            <h3 className="text-xl font-semibold text-[#5D1919] mb-2">
-              {item.title}
-            </h3>
-            <p className="text-[#5D1919]">{item.desc}</p>
+            {/* Box Content*/}
+            <div className="flex flex-col lg:flex-row items-center lg:items-start gap-6">
+              {/* Text */}
+              <div className="flex-1 text-center lg:text-left">
+                <h3 className="text-xl font-semibold text-black mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-[#5D1919]">{item.desc}</p>
+              </div>
+
+              {/* Image */}
+              <div className="w-32 h-32 lg:w-40 lg:h-40 flex-shrink-0 mt-4 lg:mt-0">
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </div>
           </motion.div>
         ))}
       </div>
