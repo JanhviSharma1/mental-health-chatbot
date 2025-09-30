@@ -1,9 +1,10 @@
 "use client";
 
-import * as React from "react";
+import React from "react";
 import clsx from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
 import { Listbox, Portal } from "@headlessui/react";
+import { useRouter } from "next/navigation";
 
 const FEELINGS = [
   "anxious",
@@ -18,6 +19,7 @@ const FEELINGS = [
 
 const Support = () => {
   const [value, setValue] = React.useState(FEELINGS[0]);
+  const router = useRouter();
 
   return (
     <section className="relative z-40 w-full px-6 sm:px-10 md:px-14 py-10 sm:py-12 md:py-14 text-center">
@@ -41,7 +43,10 @@ const Support = () => {
           <FeelingSelect value={value} onChange={setValue} />
         </div>
 
-        <button className="inline-flex items-center justify-center px-6 sm:px-7 md:px-8 h-10 sm:h-11 md:h-12 rounded-full bg-[#FFC702] text-[#5D1919] font-semibold text-base sm:text-lg shadow-[0_10px_20px_-8px_rgba(0,0,0,0.25)]">
+        <button
+          className="inline-flex items-center justify-center px-6 sm:px-7 md:px-8 h-10 sm:h-11 md:h-12 rounded-full bg-[#FFC702] text-[#5D1919] font-semibold text-base sm:text-lg shadow-[0_10px_20px_-8px_rgba(0,0,0,0.25)]"
+          onClick={() => router.push("/chat")}
+        >
           Chat Now
         </button>
       </div>
@@ -142,8 +147,8 @@ function FeelingSelect({
                               selected
                                 ? "bg-[#0E8C5E] text-white"
                                 : active
-                                ? "bg-[#0E8C5E]/10 text-[#0E8C5E]"
-                                : "text-[#3b2a2a]"
+                                  ? "bg-[#0E8C5E]/10 text-[#0E8C5E]"
+                                  : "text-[#3b2a2a]"
                             )}
                           >
                             {opt}
