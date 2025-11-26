@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import logging
 from contextlib import asynccontextmanager
+import os
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -14,7 +15,7 @@ app = FastAPI(
 )
 
 MODEL_NAME = "Gurpreet24/therapist_model"
-# HF_TOKEN ="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"
+token = os.getenv("HF_API_KEY")
 
 tokenizer = None
 model = None
