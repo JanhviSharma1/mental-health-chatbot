@@ -14,7 +14,7 @@ app = FastAPI(
 )
 
 MODEL_NAME = "Gurpreet24/therapist_model"
-HF_TOKEN ="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"
+# HF_TOKEN ="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"
 
 tokenizer = None
 model = None
