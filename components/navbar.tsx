@@ -3,13 +3,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import {
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
 
 const LINKS = [
   { href: "/", label: "HOME" },
@@ -89,26 +82,6 @@ export default function Navbar() {
                 {label}
               </Link>
             ))}
-          </div>
-
-          {/* Auth buttons (right side) */}
-          <div className="flex items-center gap-3">
-            <SignedOut>
-              <SignInButton mode="modal">
-                <button className="text-sm sm:text-base font-medium px-4 sm:px-5 h-9 sm:h-10 rounded-full border border-[#0E8C5E] text-[#0E8C5E] hover:bg-[#0E8C5E] hover:text-white transition">
-                  Sign In
-                </button>
-              </SignInButton>
-              <SignUpButton mode="modal">
-                <button className="bg-[#0E8C5E]/70 text-white rounded-full font-medium text-sm sm:text-base h-9 sm:h-10 px-4 sm:px-5 cursor-pointer">
-                  Sign Up
-                </button>
-              </SignUpButton>
-            </SignedOut>
-
-            <SignedIn>
-              <UserButton afterSignOutUrl="/" />
-            </SignedIn>
           </div>
         </div>
 

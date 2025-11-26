@@ -27,22 +27,40 @@ const ChatPage = () => {
     setInput("");
     setLoading(true);
 
+    //----------------------------------------------------------------------------------------------------------------------------------------//
+    //data fetch yhn hora h isko change krlio
     try {
-      const res = await fetch("/api/therapy", {
+      const res = await fetch("http://localhost:8000/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: input }),
+        body: JSON.stringify({ message: userMsg.content }),
       });
+      // bs yhin tk thi fetching (calling), baaki pr kuch khaas frk ni aayega
+      //----------------------------------------------------------------------------------------------------------------------------------------//
+
+      if (!res.ok) {
+        throw new Error(`HTTP Error: ${res.status}`);
+      }
 
       const data = await res.json();
-      const reply = data.reply || "I'm here with you. Could you tell me more?";
-      setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
-    } catch {
+
+      if (!data || !data.reply) {
+        throw new Error("Invalid JSON response");
+      }
+
+      setMessages((prev) => [
+        ...prev,
+        { role: "assistant", content: data.reply },
+      ]);
+    } catch (err) {
+      console.error("Frontend error:", err);
+
       setMessages((prev) => [
         ...prev,
         {
           role: "assistant",
-          content: "I’m sorry — something went wrong while connecting.",
+          content:
+            "I'm sorry — I couldn't connect to the therapist server. Please try again.",
         },
       ]);
     } finally {
@@ -56,7 +74,6 @@ const ChatPage = () => {
 
       {/* Chat Section */}
       <div className="flex-1 overflow-y-auto px-4 lg:py-25 sm:px-8 py-10 flex justify-center pb-28">
-        {/* added pb-28 so last messages aren't hidden behind input bar */}
         <div className="w-full max-w-3xl space-y-5">
           <AnimatePresence initial={false}>
             {messages.map((msg, i) => (
@@ -85,11 +102,12 @@ const ChatPage = () => {
               </motion.div>
             ))}
           </AnimatePresence>
+
           <div ref={chatEndRef} />
         </div>
       </div>
 
-      {/* Fixed Input Section */}
+      {/* Input */}
       <div className="fixed bottom-0 left-0 right-0 border-t border-gray-200 bg-white/50 backdrop-blur-sm px-3 sm:px-6 py-3 flex justify-center z-10">
         <div className="flex items-center space-x-3 w-full max-w-3xl">
           <textarea
@@ -104,6 +122,7 @@ const ChatPage = () => {
               (e.preventDefault(), sendMessage())
             }
           />
+
           <motion.button
             whileTap={{ scale: 0.95 }}
             whileHover={{ scale: 1.05 }}

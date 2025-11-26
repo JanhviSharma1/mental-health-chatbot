@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import Navbar from "@/components/navbar";
 
@@ -19,20 +18,10 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-r from-[#FFF7D9] via-[#F6F9E9] to-[#EAF8D9] px-6 py-16 flex flex-col items-center">
       <Navbar />
-      {/* Logo */}
-      <div className="mb-8 lg:mt-13 md:mt-6 ">
-        <Image
-          src="/mendly-logo.png"
-          alt="Mendly Logo"
-          width={120}
-          height={120}
-          priority
-        />
-      </div>
 
       {/* About */}
       <div className="max-w-3xl text-center mb-3">
-        <h1 className="text-5xl font-bold text-[#5D1919]">About Mendly</h1>
+        <h1 className="text-5xl font-bold text-[#5D1919] mt-10">About Us</h1>
       </div>
 
       <motion.div
